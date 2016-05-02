@@ -1,0 +1,25 @@
+{
+	"data": [
+		{
+			"name": "Sales",
+			"time" : "This week",
+			"amount" : "2000",
+			"percentage" : "30%",
+			"glyph" : "glyphicon-shopping-cart"
+		},
+		{
+			"name": "Downloads",
+			"time" : "This Quarter",
+			"amount" : "2000",
+			"percentage" : "40%",
+			"glyph" : "glyphicon-shopping-cart"
+		},
+		{
+			"name": "Comments",
+			"time" : "This week",
+			"amount" : "2000",
+			"percentage" : "50%",
+			"glyph" : "glyphicon-shopping-cart"
+		}
+	]
+}

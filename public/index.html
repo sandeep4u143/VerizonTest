@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<style type="text/css">
+			.glyphicon {
+			    font-size: 50px;
+			}
+			.parent {
+			  position: relative;
+			}
+			.child {
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  transform: translate(-50%, -50%);
+			}
+			iframe {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body ng-app="myApp">
+		<div ng-controller="mainCtrl">
+			<aside ng-class="showSideBar ? 'col-lg-2' : 'hidden-lg'" ng-controller="sidebarCtrl">
+				<ul class="list-group">
+					<li class="list-group-item" style="text-align: right;" ng-click="sideBarStausChange('hide')"><strong ><<</strong></li>
+					<li class="list-group-item" ng-repeat="x in list" >{{x.name}}</li>
+				</ul>
+			</aside>
+			<section ng-class="showSideBar ? 'col-lg-10' : 'col-lg-12'" style="border: 2px solid red;">
+				<div class="row">
+					<button ng-class="showSideBar? 'hidden-lg':'visible-lg' " class="btn btn-default" type="button"  ng-click="sideBarStausChange('show')">
+					   <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+					</button>
+				</div>
+				<div class="row">
+					<h1 class="col-lg-10"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</h1>
+					<div class="col-lg-2">
+						<input class="form-control" placeholder="Search">
+					</div>
+				</div>
+				<div class="row" ng-controller="topTilesCtrl">
+					<div class="col-lg-4"  style="border: 2px solid black;" ng-repeat="item in list">
+						<div ng-click="showGraph(item.name)">
+							<div class="col-lg-3"><span class="glyphicon {{item.glyph}}" ></span></div>
+							<div class="col-lg-9" style="padding:2px; position: relative; height: 70px; border-left: 2px solid black;">
+								<h2 style="padding:0px; margin: 0px; position: absolute;left: 0px; top: 0px;">{{item.name}}</h2>
+								<p style="padding:0px; margin: 0px; position: absolute; right: 0px; top: 0px;">{{item.amount}}</p>
+								<p style="padding:0px; margin: 0px; position: absolute; left: 0px; bottom: 0px;">{{item.time}}</p>
+								<p style="padding:0px; margin: 0px; position: absolute; right: 0px; bottom: 0px;"><span class="badge">{{item.percentage}}</span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<iframe ng-src="{{graph.barurl}}" ></iframe>
+					</div>
+					<div class="col-lg-6">
+						<iframe ng-src="{{graph.pieurl}}"></iframe>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4" ng-controller="bottomTilesCtrl">
+						<div class="col-lg-12"  style="border: 2px solid black;" ng-repeat="item in list">
+							<div class="col-lg-3"><span class="glyphicon {{item.glyph}}" ></span></div>
+							<div class="col-lg-9" style="padding:2px; position: relative; height: 70px; border-left: 2px solid black;">
+								<h2 style="padding:0px; margin: 0px; position: absolute;left: 0px; top: 0px;">{{item.name}}</h2>
+								<p style="padding:0px; margin: 0px; position: absolute; right: 0px; top: 0px;">{{item.amount}}</p>
+								<p style="padding:0px; margin: 0px; position: absolute; left: 0px; bottom: 0px;">{{item.time}}</p>
+								<p style="padding:0px; margin: 0px; position: absolute; right: 0px; bottom: 0px;"><span class="badge">{{item.percentage}}</span></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8">
+						<iframe ng-src="{{graph.waveurl}}"></iframe>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="scripts/app.js"></script>
+		<script src="scripts/controller/sidebar.js"></script>
+		<script src="scripts/controller/main.js"></script>
+		<script src="scripts/controller/topTiles.js"></script>
+		<script src="scripts/controller/bottomTiles.js"></script>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+{
+	"data" : {
+		"Sales" : {
+			"barurl" : "images/sales/salesbar.jpg",
+			"pieurl" : "images/sales/salespie.png",
+			"waveurl" : "images/sales/saleswave.png"
+		},
+		"Downloads" : {
+			"barurl" : "images/downloads/downloadsbar.png",
+			"pieurl" : "images/downloads/downloadspie.png",
+			"waveurl" : "images/downloads/downloadswave.jpg"
+		},
+		"Comments" : {
+			"barurl" : "images/comments/commentsbar.png",
+			"pieurl" : "images/comments/commentspie.jpg",
+			"waveurl" : "images/comments/commentswave.png"
+		}
+	}
+}
